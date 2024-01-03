@@ -1,12 +1,13 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:todo_app/route/routes.dart';
 
-import 'package:provider/provider.dart';
-import 'package:todo_app/viewModel/todo_provider.dart';
+import '../di/di_provider_setup.dart';
 
 void main() {
+
+  /// DI주입 Get_It 인스턴스 등록
+  todoProviderDiSetup();
+
   /// 기본
   runApp(
     MyApp(),

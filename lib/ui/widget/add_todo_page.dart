@@ -11,7 +11,9 @@ class AddTodoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     // final todoProvider = Provider.of<TodoProvider>(context);
+
     final todoProvider = context.read<TodoProvider>(); // Provider.of 대신 context.read 사용
 
     return Scaffold(
