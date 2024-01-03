@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/ui/mian_screen.dart';
@@ -8,8 +9,6 @@ import 'package:todo_app/ui/widget/edit_todo_page.dart';
 import '../viewModel/todo_provider.dart';
 import '../viewModel/user_provider.dart';
 
-final todoProvider = TodoProvider();
-
 final GoRouter $Router = GoRouter(
   initialLocation: '/',
   routes: [
@@ -18,8 +17,8 @@ final GoRouter $Router = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         return MultiProvider(
           providers: [
-            ChangeNotifierProvider.value(value: todoProvider), // 재사용
-            ChangeNotifierProvider(create:(context)=> UserProvider()), // UserProvider 생성
+            ChangeNotifierProvider.value(value: GetIt.instance<TodoProvider>()),
+            ChangeNotifierProvider(create: (context) => UserProvider()),
           ],
           child: const MainScreen(),
         );
@@ -29,7 +28,7 @@ final GoRouter $Router = GoRouter(
       path: '/add',
       builder: (BuildContext context, GoRouterState state) {
         return ChangeNotifierProvider.value(
-          value: todoProvider,
+          value: GetIt.instance<TodoProvider>(),
           child: AddTodoPage(),
         );
       },
@@ -38,10 +37,10 @@ final GoRouter $Router = GoRouter(
         path: '/edit/:index',
         builder: (BuildContext context, GoRouterState state) {
           return ChangeNotifierProvider.value(
-            value: todoProvider,
-            child: EditTodoPage(index: int.parse(state.pathParameters['index']!)),
+            value: GetIt.instance<TodoProvider>(),
+            child:
+                EditTodoPage(index: int.parse(state.pathParameters['index']!)),
           );
-        }
-    )
+        })
   ],
 );

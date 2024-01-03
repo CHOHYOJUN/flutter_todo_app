@@ -9,7 +9,6 @@ class TodoProvider with ChangeNotifier {
   // 할 일 추가
   void addTodo(String title) {
     todos.add(Todo(title: title));
-    print(todos);
     notifyListeners();
   }
 
@@ -22,6 +21,8 @@ class TodoProvider with ChangeNotifier {
   // 할 일 삭제
   void removeTodo(int index) {
     todos.removeAt(index);
+
+    toggleComplete(index);
     notifyListeners();
   }
 }
