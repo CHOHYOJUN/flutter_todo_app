@@ -3,7 +3,18 @@ import 'package:todo_app/route/routes.dart';
 
 import '../di/di_provider_setup.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+void main() async {
+
+
+
+  /// 파이어베이스 초기화
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   /// DI주입 Get_It 인스턴스 등록
   todoProviderDiSetup();
@@ -12,6 +23,8 @@ void main() {
   runApp(
     MyApp(),
   );
+
+
 
   /// 하나의 상태관리
   // runApp(

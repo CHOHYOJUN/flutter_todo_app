@@ -17,7 +17,7 @@ final GoRouter $Router = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         return MultiProvider(
           providers: [
-            ChangeNotifierProvider.value(value: GetIt.instance<TodoProvider>()),
+            ChangeNotifierProvider.value(value: GetIt.instance<TodoProvider>()..getTodos()),
             ChangeNotifierProvider(create: (context) => UserProvider()),
           ],
           child: const MainScreen(),

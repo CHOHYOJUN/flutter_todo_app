@@ -22,13 +22,13 @@ class TodoListPage extends StatelessWidget {
           title: Text(todo.title),
           leading: Checkbox(
             value: todo.isCompleted,
-            onChanged: (_) => context.read<TodoProvider>().toggleComplete(index), // Provider.of 대신 context.read 사용
+            onChanged: (_) => context.read<TodoProvider>().toggleComplete(todo), // Provider.of 대신 context.read 사용
           ),
           trailing: IconButton(
             icon: const Icon(Icons.edit),
             onPressed: () => context.go('/edit/$index'),
           ),
-          onLongPress: () => context.read<TodoProvider>().removeTodo(index), // Provider.of 대신 context.read 사용
+          onLongPress: () => context.read<TodoProvider>().deleteTodo(todo), // Provider.of 대신 context.read 사용
         );
       },
     );

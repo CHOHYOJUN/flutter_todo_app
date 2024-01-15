@@ -6,11 +6,11 @@ final GetIt getIt = GetIt.instance;
 
 void todoProviderDiSetup(){
 
-  /// TodoProvider 인스턴스를 싱글톤으로 등록합니다.
-  /// 싱글톤은 항상 [ 동일한 ]  인스턴스를 반환합니다. ->  .singleton
+  /// TodoProvider 인스턴스를 싱글톤으로 등록.
+  /// 싱글톤은 항상 [ 동일한 ]  인스턴스를 반환.
   getIt.registerSingleton<TodoProvider>(TodoProvider());
 
-  /// TodoProvider 인스턴스를 팩토리로 등록합니다.
-  /// 팩토리는 요청시마다 [ 새로운 ] 인스턴스를 생성합니다. -> .factory
-  getIt.registerFactory<TodoProvider>(() => TodoProvider());
+  /// TodoProvider 인스턴스를 팩토리로 등록.
+  /// 팩토리는 요청시마다 [ 새로운 ] 인스턴스를 생성.
+  // getIt.registerFactory<TodoProvider>(() => TodoProvider());
 }

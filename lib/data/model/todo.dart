@@ -2,16 +2,18 @@
 
 // 할 일 데이터 모델
 class Todo {
+  String id;
   String title;
   bool isCompleted;
 
   Todo({
+    required this.id,
     required this.title,
-    this.isCompleted = false,
+    required this.isCompleted,
   });
 
   @override
   String toString() {
-    return 'Todo{title: $title, isCompleted: $isCompleted}';
+    return 'Todo{id: $id, title: $title, isCompleted: $isCompleted}';
   }
 }
