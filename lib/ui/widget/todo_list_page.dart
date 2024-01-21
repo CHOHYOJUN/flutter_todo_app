@@ -12,25 +12,32 @@ class TodoListPage extends StatelessWidget {
     final todoProvider =
         context.watch<TodoProvider>(); // Provider.of 대신 context.watch 사용
 
-    return ListView.builder(
-      itemCount: todoProvider.todos.length,
-      itemBuilder: (context, index) {
+    return Column(
+      children: [
+        ListView.builder(
+          itemCount: todoProvider.todos.length,
+          itemBuilder: (context, index) {
+            final todo = todoProvider.todos[index];
 
-        final todo = todoProvider.todos[index];
-
-        return ListTile(
-          title: Text(todo.title),
-          leading: Checkbox(
-            value: todo.isCompleted,
-            onChanged: (_) => context.read<TodoProvider>().toggleComplete(todo), // Provider.of 대신 context.read 사용
-          ),
-          trailing: IconButton(
-            icon: const Icon(Icons.edit),
-            onPressed: () => context.go('/edit/$index'),
-          ),
-          onLongPress: () => context.read<TodoProvider>().deleteTodo(todo), // Provider.of 대신 context.read 사용
-        );
-      },
+            return ListTile(
+              title: Text(todo.title),
+              leading: Checkbox(
+                value: todo.isCompleted,
+                onChanged: (_) => context
+                    .read<TodoProvider>()
+                    .toggleComplete(todo), // Provider.of 대신 context.read 사용
+              ),
+              trailing: IconButton(
+                icon: const Icon(Icons.edit),
+                onPressed: () => context.go('/edit/$index'),
+              ),
+              onLongPress: () => context
+                  .read<TodoProvider>()
+                  .deleteTodo(todo), // Provider.of 대신 context.read 사용
+            );
+          },
+        ),
+      ],
     );
   }
 }

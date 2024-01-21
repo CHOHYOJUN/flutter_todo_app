@@ -5,42 +5,56 @@ import 'package:provider/provider.dart';
 import 'package:todo_app/ui/mian_screen.dart';
 import 'package:todo_app/ui/widget/add_todo_page.dart';
 import 'package:todo_app/ui/widget/edit_todo_page.dart';
+import 'package:todo_app/ui/widget/odm_test_page.dart';
+import 'package:todo_app/viewModel/odm_test.dart';
 
 import '../viewModel/todo_provider.dart';
 import '../viewModel/user_provider.dart';
 
 final GoRouter $Router = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/odm',
   routes: [
+    // GoRoute(
+    //   path: '/',
+    //   builder: (BuildContext context, GoRouterState state) {
+    //     return MultiProvider(
+    //       providers: [
+    //         ChangeNotifierProvider.value(
+    //             value: GetIt.instance<TodoProvider>()..getTodos()),
+    //         ChangeNotifierProvider(create: (context) => UserProvider()),
+    //       ],
+    //       child: const MainScreen(),
+    //     );
+    //   },
+    // ),
+    // GoRoute(
+    //   path: '/add',
+    //   builder: (BuildContext context, GoRouterState state) {
+    //     return ChangeNotifierProvider.value(
+    //       value: GetIt.instance<TodoProvider>(),
+    //       child: AddTodoPage(),
+    //     );
+    //   },
+    // ),
+    // GoRoute(
+    //   path: '/edit/:index',
+    //   builder: (BuildContext context, GoRouterState state) {
+    //     return ChangeNotifierProvider.value(
+    //       value: GetIt.instance<TodoProvider>(),
+    //       child: EditTodoPage(index: int.parse(state.pathParameters['index']!)),
+    //     );
+    //   },
+    // ),
     GoRoute(
-      path: '/',
+      path: '/odm',
       builder: (BuildContext context, GoRouterState state) {
-        return MultiProvider(
-          providers: [
-            ChangeNotifierProvider.value(value: GetIt.instance<TodoProvider>()..getTodos()),
-            ChangeNotifierProvider(create: (context) => UserProvider()),
-          ],
-          child: const MainScreen(),
-        );
-      },
-    ),
-    GoRoute(
-      path: '/add',
-      builder: (BuildContext context, GoRouterState state) {
+        // return OdmTestPage();
         return ChangeNotifierProvider.value(
-          value: GetIt.instance<TodoProvider>(),
-          child: AddTodoPage(),
-        );
+          value: OdmTest(),
+          child: OdmTestPage(),
+          );
+
       },
     ),
-    GoRoute(
-        path: '/edit/:index',
-        builder: (BuildContext context, GoRouterState state) {
-          return ChangeNotifierProvider.value(
-            value: GetIt.instance<TodoProvider>(),
-            child:
-                EditTodoPage(index: int.parse(state.pathParameters['index']!)),
-          );
-        })
   ],
 );

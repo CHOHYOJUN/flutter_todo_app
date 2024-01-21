@@ -17,7 +17,7 @@ void main() async {
   );
 
   /// DI주입 Get_It 인스턴스 등록
-  todoProviderDiSetup();
+  // todoProviderDiSetup();
 
   /// 기본
   runApp(
